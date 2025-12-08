@@ -1,0 +1,272 @@
+/* Main styling goes here */
+
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: var(--fw-body-regular);
+  font-size: 1rem;
+  color: var(--clr-charcoal-700);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: var(--clr-cream-500);
+  position: relative;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  &::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('../images/cooking-bg.jpeg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: repeat;
+    opacity: 0.1;
+    z-index: -1;
+    pointer-events: none;
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  min-height: 100dvh;
+  max-width: 800px;
+  margin: 2rem auto;
+  overflow-x: hidden;
+  border-radius: var(--ui-border-radius);
+  background-color: var(--clr-sage-200);
+  padding: 2rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  @media (max-width: 700px) {
+    width: 96%;
+    margin: 1rem 2%;
+    padding: 1rem;
+  }
+}
+
+h1 {
+  font-family: var(--font-headline);
+  font-weight: var(--fw-headline-bold);
+  font-size: 4rem;
+  color: var(--clr-charcoal-500);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+form#ingredient-form {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 2rem auto;
+  width: 100%;
+  padding: 1rem;
+  justify-content: center;
+  align-items: center;
+  input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 2px solid var(--clr-charcoal-500);
+    border-radius: 0.25rem;
+    font-size: 1.5rem;
+    background-color: var(--clr-cream-100);
+    color: var(--clr-charcoal-500);
+    &:focus,
+    &:active {
+      outline: none;
+      border: 2px solid var(--clr-charcoal-500);
+      background-color: var(--clr-cream-100);
+      color: var(--clr-charcoal-500);
+    }
+  }
+  button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: var(--ui-border-radius-small);
+    font-size: 1.5rem;
+    text-wrap: nowrap;
+    background-color: var(--clr-charcoal-500);
+    color: var(--clr-cream-500);
+    cursor: pointer;
+  }
+  @media (max-width: 700px) {
+    font-size: 1.25rem;
+    flex-direction: column;
+    margin-block-end: 0;
+    button {
+      width: 100%;
+      font-size: 1.75rem;
+      padding: 1rem 1.5rem;
+    }
+  }
+}
+
+.ingredients-list {
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+  text-align: left;
+  h2 {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: var(--fw-headline-bold);
+    margin-block-end: 1rem;
+    padding: 0;
+  }
+  ul {
+    text-align: left;
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 0;
+    border-radius: var(--ui-border-radius);
+    min-height: 20px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid var(--clr-sage-300);
+      border-radius: var(--ui-border-radius-pill);
+      background-color: var(--clr-sage-500);
+      color: var(--clr-cream-100);
+      line-height: 1;
+      span {
+        display: flex;
+        align-items: center;
+      }
+      .ingredient-name {
+        font-size: 1.25rem;
+      }
+      .remove-ingredient {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.75rem;
+        cursor: pointer;
+        border: none;
+        background: transparent;
+        color: inherit;
+        padding: 0;
+        line-height: 1;
+        svg {
+          display: block;
+        }
+      }
+    }
+  }
+  @media (max-width: 700px) {
+    gap: 0.5rem;
+    ul {
+      gap: 0.5rem;
+      li {
+        padding: 0.5rem 0.75rem;
+        font-size: 1.25rem;
+        .ingredient-name {
+          font-size: 1rem;
+        }
+        .remove-ingredient {
+          font-size: 0.75rem;
+        }
+      }
+    }
+  }
+}
+
+.get-recipe-button-container {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem;
+  margin-block: 2rem;
+  border-radius: var(--ui-border-radius);
+  color: var(--clr-cream-100);
+  gap: 1rem;
+  background-color: var(--clr-charcoal-500);
+}
+.get-recipe-button-container h2 {
+  text-align: left;
+  font-size: 1.5rem;
+  font-weight: var(--fw-headline-bold);
+  margin: 0;
+  padding: 0;
+}
+.get-recipe-button-container p {
+  text-align: left;
+  font-size: 1rem;
+  font-weight: var(--fw-body-regular);
+  margin-block-start: 1rem;
+  padding: 0;
+}
+button#get-recipe-button {
+  @extend .get-recipe-button;
+}
+
+.get-recipe-button {
+  padding: 0.5rem 1.5rem;
+  border: none;
+  font-size: 1.5rem;
+  border-radius: var(--ui-border-radius-small);
+  background-color: var(--clr-sunset-500);
+  color: var(--clr-cream-500);
+  cursor: pointer;
+  align-self: center;
+  transition: transform 120ms ease, box-shadow 120ms ease, opacity 120ms ease;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+  &:hover:not(:disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+  }
+  &:disabled {
+    background-color: var(--clr-sage-300);
+    color: var(--clr-cream-100);
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+  }
+  &.loading {
+    background-color: var(--clr-charcoal-400);
+    cursor: progress;
+  }
+}
+
+/* Backward compat */
+.get-recipe-button-disabled {
+  @extend .get-recipe-button;
+  background-color: var(--clr-sage-300);
+  color: var(--clr-cream-100);
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+}
+
+/* Add future app-specific styles below */
+

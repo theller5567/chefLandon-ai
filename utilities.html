@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/src/assets/css/App.scss">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+<body>
+    <section class="font-body">
+        <header class="font-headline-bold text-charcoal-700">
+          <h1>Brand Typography & Color Tokens</h1>
+          <p class="font-body-medium text-charcoal-500">Headlines: Poppins. Body: Open Sans (or Lato alt).</p>
+        </header>
+      
+        <h2 class="font-headline-semibold text-charcoal-600">Typography Examples</h2>
+        <div class="font-headline-bold text-sage-700" style="font-size: 2rem;">
+          Headline / Poppins Bold
+        </div>
+        <div class="font-headline-semibold text-sage-600" style="font-size: 1.5rem;">
+          Headline / Poppins Semibold
+        </div>
+        <p class="font-body text-charcoal-700">
+          Body / Open Sans Regular — great for instructions and longer copy.
+        </p>
+        <p class="font-body-medium text-charcoal-700">
+          Body / Open Sans Medium — use for emphasis or UI labels.
+        </p>
+        <p class="font-body-alt text-charcoal-700">
+          Body Alt / Lato — alternate body option for UI or lists.
+        </p>
+      
+        <h2 class="font-headline-semibold text-charcoal-600">Color Swatches</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:12px;">
+          <div class="bg-sage-500 text-cream-900" style="padding:12px;border-radius:8px;">
+            <div class="font-body-semibold">Sage 500</div>
+            <code>var(--clr-sage-500)</code>
+          </div>
+          <div class="bg-sunset-500 text-cream-100" style="padding:12px;border-radius:8px;">
+            <div class="font-body-semibold">Sunset 500</div>
+            <code>var(--clr-sunset-500)</code>
+          </div>
+          <div class="bg-cream-500 text-charcoal-800" style="padding:12px;border-radius:8px;">
+            <div class="font-body-semibold">Cream 500</div>
+            <code>var(--clr-cream-500)</code>
+          </div>
+          <div class="bg-charcoal-500 text-cream-100" style="padding:12px;border-radius:8px;">
+            <div class="font-body-semibold">Charcoal 500</div>
+            <code>var(--clr-charcoal-500)</code>
+          </div>
+        </div>
+      
+        <h3 class="font-headline-semibold text-charcoal-600">Usage Examples</h3>
+        <p class="font-body text-sunset-700">
+          Apply text color: <code>class="font-body text-sunset-700"</code>
+        </p>
+        <p class="font-body text-charcoal-700 bg-cream-100" style="padding:10px;border-radius:6px;">
+          Apply background color: <code>class="bg-cream-100 text-charcoal-700"</code>
+        </p>
+      </section>
+</body>
+</html>
