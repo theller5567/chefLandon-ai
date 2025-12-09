@@ -12,7 +12,7 @@ function App() {
   const [recipe, setRecipe] = useState(null)
   const [recipeLoading, setRecipeLoading] = useState(false)
   const [ingredientsDirty, setIngredientsDirty] = useState(false)
-  const logo = './src/assets/images/chefLandon-logo3.svg'
+  const logo = '../public/images/chefLandon-logo3.svg'
 
   const ingredientButtonText = newIngredient.length > 1 ? 'Add Ingredients' : 'Add Ingredient'
   const canGetRecipe = ingredients.length > 2 && ingredientsDirty && !recipeLoading
