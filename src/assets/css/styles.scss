@@ -44,8 +44,8 @@ body {
 main {
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
   align-items: center;
-  width: 100%;
   min-height: 100dvh;
   max-width: 800px;
   margin: 2rem auto;
@@ -54,6 +54,9 @@ main {
   background-color: var(--clr-sage-200);
   padding: 2rem;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  @media (min-width: 1366px) {
+    margin: 0 auto;
+  }
   @media (max-width: 700px) {
     width: 96%;
     margin: 1rem 2%;
@@ -198,6 +201,9 @@ form#ingredient-form {
       }
     }
   }
+}
+.app-container {
+  display: flex;
 }
 
 .get-recipe-button-container {

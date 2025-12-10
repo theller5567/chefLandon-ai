@@ -4,7 +4,7 @@ import { fetchRecipe } from './api'
 import Recipe from './components/Recipe'
 import IngredientList from './components/IngredientList'
 import { FaPlus } from 'react-icons/fa6'
-
+import { useMediaQuery } from 'react-responsive'
 
 function App() {
   const [ingredients, setIngredients] = useState([])
@@ -14,8 +14,8 @@ function App() {
   const [ingredientsDirty, setIngredientsDirty] = useState(false)
   // Served from /public/images; no /public prefix needed in production
   const logo = '/images/chefLandon-logo3.svg'
-
-  const ingredientButtonText = newIngredient.length > 1 ? 'Add Ingredients' : 'Add Ingredient'
+  const isMobile = useMediaQuery({ query: '(max-width: 1366px)' })
+  const ingredientButtonText = newIngredient.includes(',') ? 'Add Ingredients' : 'Add Ingredient'
   const canGetRecipe = ingredients.length > 2 && ingredientsDirty && !recipeLoading
   const getRecipeLabel = recipeLoading ? 'Preparing…' : 'Get Recipe'
   const getRecipeButtonClass = useMemo(() => {
@@ -135,42 +135,47 @@ function App() {
   }
 
   return (
-    <main>
-      <img src={logo} alt="Chef Landon logo" />
-     <form id="ingredient-form" onSubmit={handleSubmit}>
-      <input 
-      type="text" 
-      placeholder="Add an ingredient" 
-      value={newIngredient} 
-      name="ingredient" 
-      onChange={(e) => setNewIngredient(e.target.value)} />
-      <button type="submit"><FaPlus />{ingredientButtonText}</button>
-     </form>
-     <IngredientList ingredients={ingredients} onRemove={removeIngredient} />
-    
-      <div className="get-recipe-button-container">
-        <div>
-          <h2>Ready for your recipe?</h2>
-          
-          {!(ingredients.length > 2) ? 
-          <p>Please add at least 3 ingredients to get a recipe.</p> : 
-          <p>Generate a recipe from your list of ingredients.</p>}
+    <div className="app-container">
+      <main>
+        <img src={logo} alt="Chef Landon logo" />
+        <form id="ingredient-form" onSubmit={handleSubmit}>
+          <input 
+          type="text" 
+          placeholder="Add ingredients separated by commas" 
+          value={newIngredient} 
+          name="ingredient" 
+          onChange={(e) => setNewIngredient(e.target.value)} />
+          <button type="submit"><FaPlus />{ingredientButtonText}</button>
+      </form>
+      <IngredientList ingredients={ingredients} onRemove={removeIngredient} />
+      
+        <div className="get-recipe-button-container">
+          <div>
+            <h2>Ready for your recipe?</h2>
+            
+            {!(ingredients.length > 2) ? 
+            <p>Please add at least 3 ingredients to get a recipe.</p> : 
+            <p>Generate a recipe from your list of ingredients.</p>}
+          </div>
+          <button
+            id="get-recipe-button"
+            onClick={getRecipe}
+            className={getRecipeButtonClass}
+            disabled={!canGetRecipe}
+            aria-busy={recipeLoading}
+          >
+            {getRecipeLabel}
+          </button>
+          {recipeLoading && <p className="get-recipe-button-text">Please wait while we prepare your recipe...</p>}
         </div>
-        <button
-          id="get-recipe-button"
-          onClick={getRecipe}
-          className={getRecipeButtonClass}
-          disabled={!canGetRecipe}
-          aria-busy={recipeLoading}
-        >
-          {getRecipeLabel}
-        </button>
-        {recipeLoading && <p className="get-recipe-button-text">Please wait while we prepare your recipe...</p>}
-      </div>
-    {recipe && (
-      <Recipe recipe={recipe} />
-    )}
-    </main>
+      {(isMobile &&recipe) && (
+        <Recipe recipe={recipe} />
+      )}
+      </main>
+      {!isMobile && recipe && (
+        <Recipe recipe={recipe} />
+      )}
+    </div>
   );
 }
 

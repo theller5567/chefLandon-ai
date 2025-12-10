@@ -5,6 +5,10 @@
   border-radius: 1rem;
   background-color: var(--clr-cream-200);
   color: var(--clr-charcoal-500);
+  flex-grow: 2;
+  @media (min-width: 1366px) {
+    margin-block: 0;
+  }
   @media (min-width: 700px) {
     text-align: left;
   }
